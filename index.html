@@ -14,100 +14,81 @@
          .myclass{background-color:#DDC8F1;padding:8px;margin:5px;text-align:left;border-radius: 15px 30px;}
          .chattext{background-color:#ECEAEE;padding:8px;margin:5px;text-align:right;border-radius: 15px 30px;}
       </style>
-  
-
-</head>
-
-<body>
-
-
-<script>
-
-function retrievedata(text){
-  console.log(text);
-  var div = document.createElement("div");
-div.setAttribute('class', 'myclass');
-div.innerHTML = text;
-document.getElementById("chat-content").appendChild(div);
-
-fetch('test.php')
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Error. Status Code: ' +
-          response.status);
-        return;
-      }
-
-      // Examine the text in the response
-      response.json().then(function(data) {
-        console.log(data);
-          var div2 = document.createElement("div");
-div2.setAttribute('class', 'chattext');
-div2.innerHTML = "Order details:"+data;
-document.getElementById("chat-content").appendChild(div2);
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
-                       
-fetch('test2.php')
-  .then(
-    function(response) {
-      if (response.status !== 200) {
-        console.log('Error. Status Code: ' +
-          response.status);
-        return;
-      }
-
-      // Examine the text in the response
-      response.json().then(function(data) {
-        console.log(data);
-          var div2 = document.createElement("div");
-div2.setAttribute('class', 'chattext');
-div2.innerHTML = "Shipping details:"+data;
-document.getElementById("chat-content").appendChild(div2);
-      });
-    }
-  )
-  .catch(function(err) {
-    console.log('Fetch Error :-S', err);
-  });
-
-
-
-
-
-}
-
-</script>
-
-  <div id="chatbox" style="overflow:hidden;position:relative;margin:50px;width: 365px; min-height: 400px; border: 1px solid gray">
-    <div id="chat-content" style="margin-bottom: 100px">
-     <div class="chattext">Hi and welcome to the support chat. <br>To retrieve your order status, please enter your email address:</div>
-</div>
-
-
-    <div id="textbox" style="position:absolute; float:left; bottom:0px; border:0px solid black;">
-      <form class="form-inline" name="chatform" onsubmit="retrievedata(document.getElementById('text').value);return false">
-        <div class="form-row">
-          <div class="col">
-            <textarea id="text"class="form-control" rows="2" style="width:250px;padding:0">cat-stevens@catworld.io</textarea>
-          </div>
-          <div class="col">
-            <button type="submit" class="btn btn-primary btn-lg btn-block" style="height:100%">Submit</button>
-          </div>
-        </div>
-        
-        </div>
-      </form>
-    </div>
-  </div>
- 
-                       
-
-
-
-</body>
+   </head>
+   <body>
+      <script>
+         function retrievedata(text){
+           console.log(text);
+           var div = document.createElement("div");
+         div.setAttribute('class', 'myclass');
+         div.innerHTML = text;
+         document.getElementById("chat-content").appendChild(div);
+         
+         fetch('test.php')
+           .then(
+             function(response) {
+               if (response.status !== 200) {
+                 console.log('Error. Status Code: ' +
+                   response.status);
+                 return;
+               }
+         
+               // Examine the text in the response
+               response.json().then(function(data) {
+                 console.log(data);
+                   var div2 = document.createElement("div");
+         div2.setAttribute('class', 'chattext');
+         div2.innerHTML = "Order details:"+data;
+         document.getElementById("chat-content").appendChild(div2);
+               });
+             }
+           )
+           .catch(function(err) {
+             console.log('Fetch Error :-S', err);
+           });
+                                
+         fetch('test2.php')
+           .then(
+             function(response) {
+               if (response.status !== 200) {
+                 console.log('Error. Status Code: ' +
+                   response.status);
+                 return;
+               }
+         
+               // Examine the text in the response
+               response.json().then(function(data) {
+                 console.log(data);
+                   var div2 = document.createElement("div");
+         div2.setAttribute('class', 'chattext');
+         div2.innerHTML = "Shipping details:"+data;
+         document.getElementById("chat-content").appendChild(div2);
+               });
+             }
+           )
+           .catch(function(err) {
+             console.log('Fetch Error :-S', err);
+           }); 
+         
+         }
+         
+      </script>
+      <div id="chatbox" style="overflow:hidden;position:relative;margin:50px;width: 365px; min-height: 400px; border: 1px solid gray">
+         <div id="chat-content" style="margin-bottom: 100px">
+            <div class="chattext">Hi and welcome to the support chat. <br>To retrieve your order status, please enter your email address:</div>
+         </div>
+         <div id="textbox" style="position:absolute; float:left; bottom:0px; border:0px solid black;">
+            <form class="form-inline" name="chatform" onsubmit="retrievedata(document.getElementById('text').value);return false">
+               <div class="form-row">
+                  <div class="col">
+                     <textarea id="text"class="form-control" rows="2" style="width:250px;padding:0">cat-stevens@catworld.io</textarea>
+                  </div>
+                  <div class="col">
+                     <button type="submit" class="btn btn-primary btn-lg btn-block" style="height:100%">Submit</button>
+                  </div>
+               </div>
+         </div>
+         </form>
+      </div>
+      </div>
+   </body>
